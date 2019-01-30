@@ -12,7 +12,7 @@ COPY --from=mssql /opt/mssql-tools/ /opt/mssql-tools/
 COPY --from=mssql /usr/lib/libmsodbcsql-13.so /usr/lib/libmsodbcsql-13.so
 
 # Set up glibc
-ENV GLIBC_VERSION="2.28-r0" \
+ENV GLIBC_VERSION="2.28-r0"
 
 RUN set -ex \
     # download glibc
@@ -64,7 +64,7 @@ RUN set -ex \
     && curl -sLo oci8-2.2.0.tgz https://pecl.php.net/get/oci8-2.2.0.tgz \
     && if [ -n "${HTTP_PROXY}" ]; then pear config-set http_proxy ${HTTP_PROXY}; fi \
     && echo "instantclient,${ORACLE_HOME}" | pecl install /tmp/oci8-2.2.0.tgz \
-    && echo 'extension=oci8.so' > /etc/php7/conf.d/30-oci8.ini \
+    && echo 'extension=oci8.so' > /etc/php7/conf.d/30-oci8.ini 
 
 ## Intall MSSQL lib
 RUN set -ex \

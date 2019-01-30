@@ -5,7 +5,7 @@ USER root
 ARG HTTP_PROXY
 
 # Copy microsoft odbc libs
-FROM microsoft/mssql-tools as mssql
+FROM mcr.microsoft.com/mssql-tools as mssql
 
 COPY --from=mssql /opt/microsoft/ /opt/microsoft/
 COPY --from=mssql /opt/mssql-tools/ /opt/mssql-tools/
